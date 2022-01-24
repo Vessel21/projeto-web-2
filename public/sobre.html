@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" type="text/css" href="reset.css"/>  
+  <link rel="stylesheet" type="text/css" href="tela.css"/>
+    <link rel = "icon" href="./images/carvao_img.png"> 
+    <title>Sobre</title>
+    
+</head>
+
+<body>
+    <div id="interface">
+        <header id="cabecalho">
+            <nav id="menu_mineral">
+                    <ul>
+                        <li><a href="index.html">Minerais!</a></li>
+                        <li><a href="ferro.html">Ferro</a></li>  
+                        <li><a href="selenio.html">Selênio</a></li>
+                        <li><a href="magnesio.html">Magnésio</a></li>
+                        <li><a href="potassio.html">Potássio</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="quiz.html">Quiz</a></li>
+                    </ul>
+        
+                </nav>
+                
+        </header>
+        
+    
+    </header>
+
+  <br>
+
+  <p>Nossa equipe é formada por:</p>
+
+<table sumarry ="Pequena descrição da equiepe e suas respectivas funções. ">
+    <caption>ADM's do site</caption>
+    <tr>
+    <th>Nome</th>
+    <th>Sobrenome</th>
+    <th>Função</th>
+  </tr>
+  <tr>
+    <td>Dorys</td>
+    <td>Maria Ferreira Alves</td>
+    <td rowspan="3">Roteiro</td>
+  </tr>
+  <tr>
+    <td class="zebrada">Evelyn</td>
+    <td class="zebrada">Caroline Oliveira do Nascimento</td>
+  </tr>
+  <tr>
+    <td>Alexandra</td>
+    <td>Da Silva Lima</td>
+  </tr>
+  <tr>
+    <td class="zebrada">Rafael</td>
+    <td class="zebrada">Messias dos Santos</td>
+    <td class="zebrada">Manutenção do site</td>
+  </tr> 
+
+
+</table>
+
+<br>
+<br>
+<form name="sugestao" onsubmit="enviarSugestao()">
+  <p>Tem alguma sugestão para melhorar o site?<br>
+    <textarea required minlength="20" class = 'suggestion-text' maxlength="240" style="margin-left: 20px;" rows="4" name="criticas" cols="40"></textarea></p>
+    <input style="margin-left: 20px;" id="botao" type="submit" value="Enviar">
+  </form>
+  </div>
+
+  <script>
+  function validar(){
+    if(document.sugestao.criticas.value==""){
+    alert( "Escreva algo para enviar uma sugestão!" );
+    document.sugestao.criticas.focus();
+    return false;
+    }
+
+    return true;
+  }
+
+  function enviarSugestao(){
+    event.preventDefault();
+    // const isValid =  validar();
+
+   
+
+    // if(!isValid){
+    //   return;
+    // }
+
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    console.log('Enviando sugestao')
+
+    fetch('http://localhost:3000/suggestions', {method: 'POST', headers, body: JSON.stringify({text: document.sugestao.criticas.value })});
+
+  }
+
+  </script>
+
+<footer id="rodape">
+        <p class="rodape">Site feito sem intenção lucrativa.</p>
+</footer>
+
+</body>
+</html>
